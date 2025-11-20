@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Magic - Infinity Membership</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --mv-primary: #3a1078; /* Deep Indigo/Purple */
+            --mv-secondary: #ffc400; /* Bright Gold/Yellow for CTA */
+            --mv-dark: #260c45; /* Darker Purple */
+            --mv-light: #f8f9fa; /* Bootstrap light gray */
+            --mv-background: #fcfcfc; /* A very light off-white background for sections */
+            --mv-card-bg: #fff;
+            --mv-card-border: #eee;
+            --mv-check-color: #28a745; /* Green for checkmarks */
+            --mv-red-accent: #f8455a; /* Red for bonus items */
+            --mv-pricing-bg: #f5f8ff; /* Light bluish background for pricing section */
+            --mv-pricing-card-shadow: rgba(0, 0, 0, 0.1);
+            --mv-pricing-card-border: #e0e6f0;
+            --mv-pricing-button-bg: #ffc400;
+            --mv-pricing-button-hover-bg: #ffe164;
+            --mv-pricing-button-text: #260c45;
+            
+            /* New Story Section Styles */
+            --mv-story-bg: #fff8e1; /* Light beige/cream background for the story section */
+            --mv-story-border: #ffd764;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+        }
+
+        /* --- Navigation & Banner Styles --- */
+        .top-banner {
+            background-color: #000;
+        }
+
+        .custom-navbar {
+            background-color: var(--mv-dark);
+        }
+
+        .btn-login {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+        .btn-login:hover {
+            background-color: #fff;
+            color: var(--mv-dark);
+        }
+
+        /* --- Hero Section Styles --- */
+        .hero-section {
+            background-color: var(--mv-primary);
+            background-image: linear-gradient(145deg, var(--mv-primary) 0%, #521c97 100%);
+            padding-top: 6rem !important;
+            padding-bottom: 6rem !important;
+        }
+
+        .highlight-text {
+            color: var(--mv-secondary);
+        }
+
+        .btn-cta {
+            background-color: var(--mv-secondary);
+            color: var(--mv-dark);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.25rem;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--mv-secondary); /* Keep the color on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: var(--mv-dark);
+        }
+
+        /* --- Countdown Timer --- */
+        .countdown-timer {
+            background-color: #fff;
+            border-radius: 10px;
+            max-width: 300px;
+        }
+
+        .time-box {
+            background-color: var(--mv-light);
+            border: 1px solid #ddd;
+            min-width: 55px;
+        }
+
+        /* --- General Styles --- */
+        .section-title {
+            color: var(--mv-primary);
+        }
+        
+        /* --- VIDEO SECTION STYLES --- */
+        .custom-bg-dark {
+            background-color: var(--mv-dark);
+        }
+        
+        .video-wrapper {
+            max-width: 900px; /* Wider container for video */
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-presentation-section .btn-cta {
+             background-image: linear-gradient(to top, #ffc400, #ffe164);
+             border: 2px solid var(--mv-secondary);
+        }
+        
+        .video-presentation-section .btn-cta:hover {
+            background-image: linear-gradient(to top, #ffe164, #ffc400);
+        }
+        /* --- END VIDEO SECTION STYLES --- */
+
+
+        /* --- HORIZONTAL SCROLL SECTION (TEACHERS) --- */
+        .horizontal-scroll-section {
+            padding-bottom: 5rem;
+        }
+
+        .teacher-scroll-container {
+            overflow-x: scroll;
+            white-space: nowrap;
+            padding-bottom: 1rem;
+            -webkit-overflow-scrolling: touch; 
+            scroll-behavior: smooth;
+        }
+
+        .teacher-scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .teacher-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+
+        .teacher-card-wrapper {
+            display: inline-block;
+            width: 200px;
+            height: 300px;
+            margin-right: 15px;
+            text-align: center;
+        }
+
+        .teacher-card {
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .teacher-card:hover {
+            transform: scale(1.02);
+        }
+
+        .teacher-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 60%); 
+            z-index: 1;
+        }
+
+        .teacher-info {
+            position: relative;
+            z-index: 2;
+            text-align: left;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .teacher-info h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            line-height: 1.1;
+        }
+        .teacher-info p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            margin-top: 0.2rem;
+            margin-bottom: 0;
+        }
+        
+        /* Star Magic Teacher/Focus Cards */
+        .card-jerry { background-image: url('https://picsum.photos/id/1083/200/300'); } 
+        .card-dna { background-image: url('https://picsum.photos/id/1056/200/300'); } 
+        .card-light { background-image: url('https://picsum.photos/id/1053/200/300'); } 
+        .card-yoga { background-image: url('https://picsum.photos/id/1081/200/300'); } 
+        .card-nutrition { background-image: url('https://picsum.photos/id/1069/200/300'); } 
+
+
+        /* --- Original Topics Section (Dark Purple) --- */
+        .topic-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .topic-card:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* --- What's Inside the Infinity Membership (New Stacked Phones Section) --- */
+        .whats-inside-new-section {
+            background-color: var(--mv-background); 
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            overflow: hidden;
+        }
+
+        .whats-inside-new-section .section-title {
+            color: var(--mv-primary); 
+            font-weight: 900;
+            margin-bottom: 4rem;
+        }
+
+        .stacked-phones {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            transform: rotate(-10deg);
+        }
+
+        .phone-mockup {
+            position: absolute;
+            width: 250px; 
+            height: auto;
+            max-width: 100%;
+            border-radius: 30px; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease-out;
+            background: linear-gradient(135deg, #a77dff, #47268d); 
+            padding: 10px; 
+            border: 10px solid #222; 
+            box-sizing: content-box;
+        }
+        
+        .phone-mockup img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            display: block;
+        }
+
+        .phone-mockup:nth-child(1) { /* Main visible phone */
+            z-index: 3;
+            transform: rotateZ(0deg) translateX(50px) translateY(0px); 
+        }
+        .phone-mockup:nth-child(2) { /* Slightly behind and rotated */
+            z-index: 2;
+            transform: rotateZ(-5deg) translateX(30px) translateY(20px);
+            opacity: 0.8;
+        }
+        .phone-mockup:nth-child(3) { /* Further behind */
+            z-index: 1;
+            transform: rotateZ(-10deg) translateX(10px) translateY(40px);
+            opacity: 0.6;
+        }
+
+
+        .benefit-item {
+            background-color: #fcfcfc;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+        
+        .benefit-item-highlight {
+            background-color: #fff9e6; 
+            border-color: var(--mv-secondary);
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .benefit-item .icon {
+            color: var(--mv-secondary);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            line-height: 1;
+        }
+
+        .benefit-item h6 {
+            font-weight: 700;
+            color: var(--mv-dark);
+            margin-bottom: 0.25rem;
+        }
+        
+        .benefit-item p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        .guarantee-banner {
+            background-image: linear-gradient(to right, #2c0b5c, #5f219f);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .guarantee-banner .logo {
+            width: 80px;
+            height: auto;
+            margin-right: 1.5rem;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+        }
+
+        .guarantee-banner .text-content h6 {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            font-size: 1.2rem;
+        }
+
+        .guarantee-banner .stars {
+            color: var(--mv-secondary);
+            font-size: 1.1rem;
+            margin-right: 0.5rem;
+        }
+        /* --- END Stacked Phones Section --- */
+
+
+        /* --- Tools & Bonuses Section Styles --- */
+        .tools-section {
+            background-color: var(--mv-card-bg); /* Use white/light background for contrast */
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+
+        .tools-section .section-title {
+            color: var(--mv-primary);
+            font-weight: 900;
+            margin-bottom: 4rem;
+        }
+
+        .tool-card {
+            background-color: var(--mv-card-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            height: 100%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .tool-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h6 {
+            font-weight: 700;
+            color: var(--mv-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .tool-card p {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* Tools List & Bonuses */
+        .tools-list-wrapper {
+            max-width: 900px;
+            margin: 3rem auto 0 auto;
+        }
+
+        .tool-list-item {
+            background-color: var(--mv-card-bg);
+            border: 1px solid var(--mv-card-border);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .tool-list-item i {
+            color: var(--mv-secondary); /* Gold for general tools */
+            font-size: 1.1rem;
+            margin-right: 1rem;
+        }
+        
+        .bonus-section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--mv-dark);
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .bonus-item {
+            background-color: #fcebeb; /* Light red/pink background for bonuses */
+            border: 1px solid var(--mv-red-accent);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .bonus-item i {
+            color: var(--mv-red-accent); /* Red for bonus icons */
+            font-size: 1.1rem;
+            margin-right: 1rem;
+        }
+
+        .bonus-item-more {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            text-align: center;
+            font-weight: 700;
+            color: var(--mv-primary);
+        }
+        .bonus-item-more i {
+            color: var(--mv-primary);
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        /* --- END Tools & Bonuses Section Styles --- */
+
+
+        /* --- Media Logos Section (Existing) --- */
+        .media-logos-section {
+            background-color: var(--mv-background);
+            padding: 4rem 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 1000px;
+            margin: 4rem auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .media-logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+            align-items: center;
+            justify-items: center;
+            margin-bottom: 3rem;
+            padding: 0 2rem;
+        }
+
+        .media-logo img {
+            max-width: 120px;
+            height: auto;
+            opacity: 0.7;
+            filter: grayscale(100%);
+            transition: opacity 0.3s, filter 0.3s;
+        }
+
+        .media-logo img:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        /* Forbes Magazine Cover */
+        .forbes-cover {
+            max-width: 300px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .forbes-cover img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- Why Stuck Section (Existing) --- */
+        .stuck-section {
+            background-color: var(--mv-background); 
+            padding-top: 4rem;
+        }
+        
+        .stuck-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+            height: 100%;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .stuck-card h5 {
+            color: var(--mv-primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .stuck-section .cta-wrapper {
+            max-width: 600px;
+            margin: 3rem auto 6rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            background-image: linear-gradient(to top right, #ffc400, #ffe164);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stuck-section .cta-wrapper .btn-cta {
+             background-color: var(--mv-dark);
+             color: white;
+        }
+
+        /* --- Pricing Section Styles --- */
+        .new-pricing-section {
+            background-color: var(--mv-pricing-bg); /* Light bluish background */
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .new-pricing-section .section-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--mv-dark);
+            margin-bottom: 1rem;
+        }
+
+        .new-pricing-section .section-subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 4rem;
+        }
+
+        .diamond-icon-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .diamond-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #a0d9e4; /* Light blue */
+            transform: rotate(45deg);
+            margin: 0 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .diamond-icon:nth-child(2) { background-color: #67b0c0; }
+        .diamond-icon:nth-child(3) { background-color: #378da0; }
+
+
+        .pricing-card-new {
+            background-color: var(--mv-card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px var(--mv-pricing-card-shadow);
+            border: 1px solid var(--mv-pricing-card-border);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .pricing-card-new.most-popular {
+            border-color: var(--mv-secondary);
+            transform: translateY(-15px); /* Lift the most popular card */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .pricing-card-new:hover:not(.most-popular) {
+            transform: translateY(-5px);
+        }
+
+
+        .most-popular-ribbon {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: #55bde0; /* Blue for the ribbon */
+            color: white;
+            padding: 0.2rem 2.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+            transform-origin: 50% 50%;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .pricing-card-new h4 {
+            font-weight: 900;
+            color: var(--mv-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .pricing-card-new .price {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--mv-primary);
+            line-height: 1;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-card-new .price-small {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--mv-primary);
+            line-height: 1;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+
+        .pricing-card-new .duration {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-card-new .feature-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            flex-grow: 1; /* Allow list to take up available space */
+            margin-bottom: 2rem;
+        }
+
+        .pricing-card-new .feature-list li {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .pricing-card-new .feature-list li::before {
+            content: '\f00c'; /* Font Awesome checkmark */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--mv-check-color);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.9rem;
+        }
+        /* Specific override for the DNA Activation line from screenshot */
+        .pricing-card-new .feature-list li.dna-activation-feature::before {
+             content: '\f061'; /* Font Awesome arrow-right */
+             color: var(--mv-primary);
+             font-size: 0.8rem;
+             top: 4px;
+        }
+        .pricing-card-new .feature-list li.no-icon::before {
+            content: none;
+            padding-left: 0;
+        }
+        .pricing-card-new .feature-list li.no-icon {
+            padding-left: 0;
+        }
+        .pricing-card-new .feature-list li .text-muted {
+            font-size: 0.85rem;
+            display: block;
+        }
+
+
+        .pricing-card-new .btn-start-trial {
+            background-color: var(--mv-pricing-button-bg);
+            color: var(--mv-pricing-button-text);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            width: 100%;
+            transition: background-color 0.2s, transform 0.2s;
+            margin-top: auto; /* Push button to bottom */
+        }
+
+        .pricing-card-new .btn-start-trial:hover {
+            background-color: var(--mv-pricing-button-hover-bg);
+            transform: translateY(-2px);
+        }
+        /* --- END Pricing Section Styles --- */
+        
+        
+        /* --- NEW Story Section Styles --- */
+        .story-section {
+            background-color: var(--mv-background); 
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        
+        .story-card {
+            color: white !important;
+            border: 1px solid var(--mv-story-border);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .story-card p {
+            color: white !important;
+        }
+        
+        .story-card h3 {
+            color: var(--mv-dark);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .story-content {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #444;
+            max-height: 300px; /* Initial height for 'read more' effect */
+            overflow: hidden;
+            position: relative;
+            transition: max-height 0.7s ease-in-out; /* Slower transition for effect */
+        }
+        
+        .story-content.expanded {
+            max-height: 5000px; /* Large enough height to show all content */
+        }
+
+        .story-content .fade-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            /* Ensure the gradient color matches the card background */
+            background: linear-gradient(to top, var(--mv-story-bg) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+        
+        .story-content.expanded .fade-overlay {
+            opacity: 0;
+        }
+        
+        .story-card p {
+            margin-bottom: 1rem;
+        }
+        
+        .story-card p strong {
+            color: var(--mv-primary);
+        }
+
+        
+        .review-author-info {
+            display: flex; /* Makes content align in a row */
+            align-items: center; /* Vertically centers items */
+            margin-top: 1rem; /* Space from the testimonial text above */
+        }
+
+        .review-author-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%; /* Ensuring perfect circle */
+            object-fit: cover;
+            margin-right: 0.75rem; /* Space between image and name */
+            border: 2px solid var(--mv-primary); /* Primary color border for pop */
+        }
+
+        .review-author-info p {
+            margin-bottom: 0; /* Remove default paragraph bottom margin */
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--mv-dark);
+            line-height: 1.2; /* Ensure text aligns nicely with the image */
+        }
+
+        .story-card .read-more-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: none;
+            border: 2px solid var(--mv-primary); /* Add border for definition */
+            padding: 0.5rem 0;
+            font-weight: 900; /* Bolder font */
+            color: var(--mv-primary);
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            color: white;
+
+        }
+
+        .story-card .read-more-btn:hover {
+            background-color: var(--mv-primary);
+            color: white;
+        }
+        
+        /* --- STORY SECTION (Dark Theme Styles) --- */
+    .story-section {
+        background-color: var(--mv-dark); /* Ensure the deep purple background */
+        color: white; /* Default text color set to white */
+        position: relative;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .story-card {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: transparent; /* Allows the section background to show through */
+    }
+
+    /* Ensure all headings are white */
+    .story-section h3, 
+    .story-section h4 {
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Highlight strong/bold text with the accent color */
+    .story-section strong {
+        color: var(--mv-secondary);
+    }
+
+    /* Styling for list items */
+    .story-section ul {
+        list-style-type: disc;
+        padding-left: 25px;
+        color: rgba(255, 255, 255, 0.8); /* Slightly less opaque for readability */
+    }
+
+    .story-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Styling for small text (like the founder's name) */
+    .story-section .text-muted,
+    .story-section .text-muted .small {
+        color: rgba(255, 255, 255, 0.5) !important; /* Ensure small print is light gray */
+    }
+
+    /* Read More Button styling */
+    .read-more-btn {
+        background: none;
+        border: 1px solid white;
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        cursor: pointer;
+        display: block;
+        width: fit-content;
+        margin: 1rem auto 0;
+        transition: background-color 0.2s;
+    }
+
+    .read-more-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white !important;
+    }
+
+    /* Fade Overlay for the collapse effect */
+    .fade-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        /* Gradient from transparent to the dark background color */
+        background: linear-gradient(to top, var(--mv-dark), rgba(38, 12, 69, 0)); 
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    /* Style for the signature placeholder image (if using the inverted filter) */
+    .story-section img[alt*="Signature"] {
+        filter: brightness(0) invert(1);
+    }
+        /* Content formatting for the story */
+        .story-content h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--mv-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .story-content ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding-left: 0;
+            margin-bottom: 1rem;
+        }
+        .story-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- New CSS for Continuous Scroll Animation --- */
+        .scrolling-wrapper {
+            overflow: hidden; /* Hide the content outside the container */
+            white-space: nowrap;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .scrolling-content {
+            display: inline-block;
+            animation-name: scroll-left-slow; /* Default: Left-to-right content moves left */
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+        }
+
+        .scroll-reverse .scrolling-content {
+            animation-name: scroll-right-slow; /* Reversed: Right-to-left content moves right */
+        }
+
+        /* Keyframes for Left-to-Right Scroll (Content moves Left) */
+        @keyframes scroll-left-slow {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Keyframes for Right-to-Left Scroll (Content moves Right) */
+        @keyframes scroll-right-slow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0%); }
+        }
+
+        /* Ensure cards are wide enough for smooth loop */
+        .scrolling-content .teacher-card-wrapper {
+            min-width: 250px; /* Slightly wider cards for better visual flow */
+            margin-right: 25px; /* Increased margin */
+        }
+        /* --- END NEW Story Section Styles --- */
+
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 991.98px) {
+            .stacked-phones {
+                height: 350px;
+                transform: rotate(-5deg);
+                margin-bottom: 3rem;
+            }
+            .tool-card {
+                margin-bottom: 1.5rem;
+            }
+            .new-pricing-section .section-title {
+                font-size: 2.2rem;
+            }
+            .pricing-card-new.most-popular {
+                transform: translateY(0); /* Remove lift on smaller screens */
+            }
+        }
+        @media (max-width: 767.98px) {
+            .stacked-phones {
+                height: 300px;
+            }
+            .phone-mockup {
+                width: 180px;
+            }
+            .new-pricing-section {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            .new-pricing-section .section-title {
+                font-size: 1.8rem;
+            }
+            .new-pricing-section .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            .pricing-card-new {
+                margin-bottom: 2rem;
+            }
+            .pricing-card-new.most-popular {
+                margin-top: 1.5rem;
+                margin-bottom: 3.5rem; /* Space for ribbon */
+            }
+            .story-card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-banner text-center py-2 text-white">
+        <p class="mb-0 fw-bold">⭐ BLACK FRIDAY EXCLUSIVE: SAVE BIG ON STAR MAGIC HEALING! ⭐</p>
+    </div>
+
+    <nav class="navbar navbar-expand-lg sticky-top custom-navbar" id="main-nav">
+        <div class="container py-2">
+            <a class="navbar-brand text-white fw-bold fs-3" href="#">
+                <i class="fas fa-star me-2"></i> Star Magic
+            </a>
+            <div class="d-flex align-items-center">
+                <a href="#" class="btn btn-outline-light me-3 d-none d-md-inline-block">Support</a>
+                <a href="#" class="btn btn-login me-3 d-none d-md-inline-block">Login</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section text-center py-5">
+        <div class="container">
+            <h1 class="display-3 fw-bolder mb-4 text-white">
+                Unlock Your Potential with the <span class="highlight-text">Infinity Membership</span>
+            </h1>
+            <p class="lead mb-4 text-white-50">Gain access to our signature **12 Strand DNA Activation Protocol** — the initiation designed to awaken your dormant DNA codes & align your entire field.</p>
+            
+            <div class="countdown-timer mb-4 p-3 mx-auto">
+                <p class="mb-1 fw-bold text-dark">Black Friday Offer Ends In:</p>
+                <div id="countdown" class="d-flex justify-content-center fw-bold fs-4">
+                    <span class="time-box p-2 mx-1 rounded text-dark" id="days">00D</span>
+                    <span class="time-box p-2 mx-1 rounded text-dark" id="hours">00H</span>
+                    <span class="time-box p-2 mx-1 rounded text-dark" id="minutes">00M</span>
+                    <span class="time-box p-2 mx-1 rounded text-dark" id="seconds">00S</span>
+                </div>
+            </div>
+
+            <div class="rating mt-4">
+                <span class="text-warning fs-5">
+                    &#9733;&#9733;&#9733;&#9733;&#9733;
+                </span>
+                <p class="text-white-50 small mt-1">Rated 5 Stars by thousands of souls worldwide</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="video-presentation-section py-5 custom-bg-dark text-white text-center">
+        <div class="container">
+            <p class="small text-white-50 mb-3">
+                <i class="fas fa-triangle me-2 highlight-text"></i> FOR BEGINNERS & CURIOUS SEASONED PRACTITIONERS
+            </p>
+            
+            <div class="video-wrapper mx-auto mb-4">
+                <video controls playsinline poster="https://picsum.photos/seed/starmagic/800/450" class="w-100" style="aspect-ratio: 16/9; display: block;">
+                    <source src="https://content.apisystem.tech/hls/medias/CNoqHNXCgAi2URCRNxMO/media/transcoded_videos/cts-78780420eac8c554_,360,480,720,1080,p.mp4.urlset/master.m3u8" type="application/x-mpegURL">
+                    Your browser does not support the video tag or HLS streaming without a library.
+                </video>
+            </div>
+
+            <p class="lead fw-bold text-white mb-4">
+                Join <span class="highlight-text">Jerry Sargeant</span> And The Star Magic Tribe To Access Weekly Live Meditations, Light Language Transmissions, Mystery School Teachings, Cosmic Yoga Sessions, Ascension Nutrition, And More.
+            </p>
+
+            <a href="#cta-price" class="btn btn-cta btn-lg fw-bold mb-3">
+                Start your free 7 day trial and begin the DNA Activation
+            </a>
+            <p class="small text-white-50">No Commitment — Cancel Anytime</p>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light text-center">
+        <div class="container">
+            <h2 class="display-6 fw-bold mb-5 section-title">Proof That Transformation Happens Here</h2>
+            <div class="row g-4 justify-content-center">
+                
+                <div class="col-md-4">
+                    <div class="p-3 border rounded shadow-sm h-100 text-start">
+                        <span class="text-warning fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <p class="mt-2 fst-italic">"My life changed. I tried psychology and other forms of healing but nothing worked. I now feel whole, happy and grateful."</p>
+                        <div class="review-author-info">
+                            <img src="https://picsum.photos/seed/lauren/40/40" alt="Reviewer Lauren">
+                            <p class="mb-0 fw-bold small">- Lauren</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="p-3 border rounded shadow-sm h-100 text-start">
+                        <span class="text-warning fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <p class="mt-2 fst-italic">"The energy, the wisdom, and the incredible tools shared here are beyond anything I have encountered before. The impact on my life has been profound."</p>
+                        <div class="review-author-info">
+                            <img src="https://picsum.photos/seed/reviewer-d/40/40" alt="Reviewer D.">
+                            <p class="mb-0 fw-bold small">- D.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="p-3 border rounded shadow-sm h-100 text-start">
+                        <span class="text-warning fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <p class="mt-2 fst-italic">"This isn’t basic or surface level spirituality, it’s real, deep healing that reaches your core. I plan to come back every year because it’s just too powerful to miss."</p>
+                        <div class="review-author-info">
+                            <img src="https://picsum.photos/seed/reviewer-thomas/40/40" alt="Reviewer Thomas">
+                            <p class="mb-0 fw-bold small">- Thomas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="horizontal-scroll-section pt-5 pb-0">
+        <div class="container-fluid text-center">
+            <h3 class="mb-4 fw-bold section-title">Meet Your Guide: Jerry Sargeant</h3>
+            <p class="mb-4 text-muted">Known globally as **"The Facilitator"**, Jerry Sargeant is a world-renowned frequency healer, author, and founder of Star Magic Healing.</p>
+        </div>
+        
+        <div class="scrolling-wrapper">
+            <div class="scrolling-content" style="animation-duration: 40s;">
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/jerry-sargeant/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>JERRY SARGEANT</h4><p>The Facilitator</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/dna-helix-activation/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>12 STRAND DNA</h4><p>Protocol Initiation</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/light-language-flow/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>LIGHT LANGUAGE</h4><p>Multi-Dimensional Codes</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/cosmic-yoga-pose/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>COSMIC YOGA</h4><p>Activate & Ground</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/vibrational-food-recipes/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>ASCENSION FOOD</h4><p>Vibrational Recipes</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/mystery-school-cosmic/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>MYSTERY SCHOOL</h4><p>Cosmic Teachings</p></div>
+                    </div>
+                </div>
+                
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/jerry-sargeant/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>JERRY SARGEANT</h4><p>The Facilitator</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/dna-helix-activation/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>12 STRAND DNA</h4><p>Protocol Initiation</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/light-language-flow/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>LIGHT LANGUAGE</h4><p>Multi-Dimensional Codes</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/cosmic-yoga-pose/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>COSMIC YOGA</h4><p>Activate & Ground</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/vibrational-food-recipes/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>ASCENSION FOOD</h4><p>Vibrational Recipes</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/mystery-school-cosmic/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>MYSTERY SCHOOL</h4><p>Cosmic Teachings</p></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="container-fluid text-center mt-4 pb-5">
+            <a href="#cta-price" class="btn btn-cta">Begin Your Journey</a>
+        </div>
+    </section>
+
+    <section class="py-5 custom-bg-dark">
+        <div class="container text-center text-white">
+            <h2 class="display-6 fw-bold mb-5">What's Inside the Infinity Membership</h2>
+            
+            <div class="row g-4">
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="topic-card p-4 rounded text-center">
+                        <i class="fas fa-microchip fs-1 mb-3 highlight-text"></i>
+                        <h4 class="fw-bold">12 Strand DNA Activation</h4>
+                        <p class="small text-white-50">Step-by-step activations to reboot your system and anchor your next level.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="topic-card p-4 rounded text-center">
+                        <i class="fas fa-language fs-1 mb-3 highlight-text"></i>
+                        <h4 class="fw-bold">Light Language Transmissions</h4>
+                        <p class="small text-white-50">Multi-dimensional activations that awaken dormant DNA and elevate consciousness.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="topic-card p-4 rounded text-center">
+                        <i class="fas fa-book-sparkles fs-1 mb-3 highlight-text"></i>
+                        <h4 class="fw-bold">Mystery School Teachings</h4>
+                        <p class="small text-white-50">Monthly live sessions revealing deep cosmic knowledge and universal truths.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="topic-card p-4 rounded text-center">
+                        <i class="fas fa-spa fs-1 mb-3 highlight-text"></i>
+                        <h4 class="fw-bold">Healing Meditations & Frequency Spas</h4>
+                        <p class="small text-white-50">Frequency encoded meditations to upgrade your energy and align your vibration.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="topic-card p-4 rounded text-center">
+                        <i class="fas fa-seedling fs-1 mb-3 highlight-text"></i> 
+                        <h4 class="fw-bold">Live Circles & Skool Community</h4>
+                        <p class="small text-white-50">Safe, transformative spaces for men's & women's circles within the Star Magic tribe.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="topic-card p-4 rounded text-center">
+                        <i class="fas fa-seedling fs-1 mb-3 highlight-text"></i>
+                        <h4 class="fw-bold">Ascension Nutrition & Yoga</h4>
+                        <p class="small text-white-50">Vibrational recipes and powerful Cosmic Yoga sessions to ground your energy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="whats-inside-new-section">
+        <div class="container">
+            <h2 class="display-5 text-center fw-bold section-title mb-5">
+                What's Inside the <span class="highlight-text">Infinity Membership</span>
+            </h2>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0 d-none d-lg-block">
+                    <div class="stacked-phones">
+                        <div class="phone-mockup">
+                            <img src="https://picsum.photos/300/600?random=1" alt="Mobile App Screen 1" class="w-100 rounded-4">
+                        </div>
+                        <div class="phone-mockup">
+                            <img src="https://picsum.photos/300/600?random=2" alt="Mobile App Screen 2" class="w-100 rounded-4">
+                        </div>
+                        <div class="phone-mockup">
+                            <img src="https://picsum.photos/300/600?random=3" alt="Mobile App Screen 3" class="w-100 rounded-4">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="benefit-item benefit-item-highlight">
+                        <div class="icon"><i class="fas fa-microchip"></i></div>
+                        <div>
+                            <h6>\*12 Strand DNA Activation\*</h6>
+                            <p>step-by-step activations that reboot your system and anchor your next level.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-carrot"></i></div>
+                        <div>
+                            <h6>Ascension Nutrition</h6>
+                            <p>Vibrational recipes to support physical, emotional, and energetic balance.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-spa"></i></div>
+                        <div>
+                            <h6>Healing Meditations</h6>
+                            <p>Frequency encoded meditations to upgrade your energy and align your vibration.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-hands-holding-child"></i></div>
+                        <div>
+                            <h6>Light Language Transmissions</h6>
+                            <p>Multi-dimensional activations that awaken dormant DNA and elevate consciousness.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-book-sparkles"></i></div>
+                        <div>
+                            <h6>Mystery School Teachings</h6>
+                            <p>Monthly live sessions and complete library revealing deep cosmic knowledge and universal truths.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="guarantee-banner">
+                <div class="logo">
+                    <img src="https://picsum.photos/80" alt="Zero Risk Guarantee Seal" class="w-100 rounded-circle">
+                </div>
+                <div class="text-content text-center text-md-start">
+                    <h6>Star Magic ZERO RISK GUARANTEE</h6>
+                    <p class="mb-0">
+                        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        Rated 4.9 • 690+ Reviews
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="tools-section">
+        <div class="container">
+            <h2 class="display-6 text-center fw-bold section-title">
+                Tools That Help You Step Into Your Power
+            </h2>
+
+            <div class="row g-4 justify-content-center mb-5">
+                <div class="col-6 col-md-3">
+                    <div class="tool-card">
+                        <img src="https://picsum.photos/seed/tool1/300/200" alt="DNA Activation" class="img-fluid">
+                        <h6>12 Strand DNA Activation Protocol</h6>
+                        <p>Quantum. Coherence. Activation.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="tool-card">
+                        <img src="https://picsum.photos/seed/tool2/300/200" alt="Meditation Library" class="img-fluid">
+                        <h6>Meditation Library</h6>
+                        <p>Reset. Healing. Expansion.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="tool-card">
+                        <img src="https://picsum.photos/seed/tool3/300/200" alt="Light Language" class="img-fluid">
+                        <h6>Light Language</h6>
+                        <p>Awaken Higher Consciousness</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="tool-card">
+                        <img src="https://picsum.photos/seed/tool4/300/200" alt="Distance Healing Videos" class="img-fluid">
+                        <h6>Distance Healing Videos</h6>
+                        <p>Targeted. Quantum Support. Anytime.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tools-list-wrapper">
+                
+                <div class="tool-list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <span class="fw-bold">Live Women's & Men's Circles</span>
+                        <p class="mb-0 small text-muted">Safe, transformative spaces within the community for rapid growth</p>
+                    </div>
+                </div>
+                
+                <div class="tool-list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <span class="fw-bold">FREE Distance Healing Videos</span>
+                        <p class="mb-0 small text-muted">Quantum Healing targeted to specific issues. Body recoded</p>
+                    </div>
+                </div>
+
+                <div class="tool-list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <span class="fw-bold">Cosmic Yoga & Breathwork</span>
+                        <p class="mb-0 small text-muted">Short, powerful sessions to ground your energy, activate your body, and expand your flow</p>
+                    </div>
+                </div>
+                
+                <div class="tool-list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <span class="fw-bold">Exercise Routines</span>
+                        <p class="mb-0 small text-muted">Short high vibe workouts with a Personal Trainer</p>
+                    </div>
+                </div>
+                
+                <h3 class="bonus-section-title">MEMBER BONUSES & DISCOUNTS</h3>
+
+                <div class="bonus-item">
+                    <i class="fas fa-gift"></i>
+                    <div>
+                        <span class="fw-bold">FREE LIVE Frequency Spas + activations, meditations, and Q&A Sessions with Jerry Sargeant himself</span>
+                    </div>
+                </div>
+                
+                <div class="bonus-item">
+                    <i class="fas fa-gift"></i>
+                    <div>
+                        <span class="fw-bold">Digital products & online experiences to raise your vibration</span>
+                    </div>
+                </div>
+
+                <div class="bonus-item">
+                    <i class="fas fa-gift"></i>
+                    <div>
+                        <span class="fw-bold">Free online teachings to enrich every area of life</span>
+                    </div>
+                </div>
+
+                <div class="bonus-item">
+                    <i class="fas fa-gift"></i>
+                    <div>
+                        <span class="fw-bold">Exclusive discounts on Star Magic products & live events</span>
+                    </div>
+                </div>
+                
+                <div class="bonus-item">
+                    <i class="fas fa-gift"></i>
+                    <div>
+                        <span class="fw-bold">Monthly Advanced Spiritual Teachings to accelerate your evolution</span>
+                    </div>
+                </div>
+
+                <div class="bonus-item-more mt-4">
+                    <i class="fas fa-plus mb-2"></i>
+                    <p class="mb-0">More included with the Infinity Membership regularly to accelerate your progress.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="media-logos-section py-5 bg-light">
+        <div class="container text-center">
+            
+            <div class="p-4 p-md-5 mx-auto bg-white rounded shadow-lg" style="max-width: 1000px; position: relative; z-index: 10;">
+                
+                <p class="small text-uppercase fw-bold mb-4" style="color: #6c757d; letter-spacing: 2px;">
+                    AS FEATURED IN
+                </p>
+                
+                <div class="media-logos-grid mb-5">
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-IIM/180/60?grayscale" alt="IIM Luxury Lifestyle Magazine"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-MSN/180/60?grayscale" alt="MSN"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-Voice/180/60?grayscale" alt="Voice"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-DM/180/60?grayscale" alt="Daily Mirror"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-GQ/180/60?grayscale" alt="GQ"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-Ritz/180/60?grayscale" alt="The Ritz Herald"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-SoulSpirit/180/60?grayscale" alt="Soul & Spirit Magazine"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-Gaia/180/60?grayscale" alt="Gaia"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-AP/180/60?grayscale" alt="AP"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-NYW/180/60?grayscale" alt="New York Weekly"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-Disrupt/180/60?grayscale" alt="Disrupt Magazine"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-LLM/180/60?grayscale" alt="The Luxury Lifestyle Magazine"></div>
+                    
+                    <div class="media-logo"><img src="https://picsum.photos/seed/Brand-LAT/180/60?grayscale" alt="The Los Angeles Tribune"></div>
+                </div>
+
+                <div class="forbes-cover" style="max-width: 350px;">
+                    <img src="https://assets-global.website-files.com/643f214b7e43685e519e99a8/6462725d97f22a57121c25ac_Forbes-Cover.webp" alt="Forbes Magazine Cover featuring Jerry Sargeant">
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="stuck-section">
+        <div class="container text-center">
+            <h2 class="display-6 fw-bold mb-5 section-title">Why Your Spiritual Journey Feels Stuck</h2>
+            
+            <div class="row g-4 justify-content-center">
+                
+                <div class="col-md-4">
+                    <div class="stuck-card">
+                        <h5 class="mb-3">Something feels missing</h5>
+                        <p class="small text-muted">That feeling arises because your DNA's next layer is asleep and your system lacks the activation structure it needs.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="stuck-card">
+                        <h5 class="mb-3">You want transformation</h5>
+                        <p class="small text-muted">But without live energy and guidance, it's hard to stay steady.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="stuck-card">
+                        <h5 class="mb-3">You need belonging</h5>
+                        <p class="small text-muted">A tribe who understands your path and walks it with you.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-wrapper">
+                 <h4 class="fw-bold mb-3 text-dark">Ready to get UNSTUCK and activate your potential?</h4>
+                 <a href="#cta-price" class="btn btn-cta btn-lg fw-bold w-100">
+                    Start your free 7 day trial and begin the DNA Activation
+                </a>
+                <p class="small text-dark-50 mt-2 mb-0">No Commitment — Cancel Anytime</p>
+            </div>
+            
+        </div>
+    </section>
+    <section class="new-pricing-section" id="cta-price">
+        <div class="container text-center">
+            <h2 class="section-title fw-bold">Membership Pricing</h2>
+            <p class="section-subtitle">Choose the level of activation that’s right for your journey.</p>
+
+            <div class="row g-4 justify-content-center">
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card-new">
+                        <h4 class="mb-1">Infinity LITE</h4>
+                        <p class="text-muted small">Beginner / Meditation Focus</p>
+                        
+                        <div class="price">£9.99</div>
+                        <p class="duration">per month</p>
+                        
+                        <ul class="feature-list">
+                            <li>Light Language Transmissions</li>
+                            <li>Healing Meditations & Frequency Spas</li>
+                            <li>Cosmic Yoga & Breathwork</li>
+                            <li>Ascension Nutrition</li>
+                            <li>Exercise Routines</li>
+                            <li class="no-icon"><span class="fw-bold text-danger small mt-2">DOES NOT INCLUDE:</span></li>
+                            <li><span class="text-muted">12 Strand DNA Activation Protocol</span></li>
+                            <li><span class="text-muted">Monthly Live Calls with Jerry</span></li>
+                        </ul>
+
+                        <a href="#" class="btn btn-start-trial">
+                            Start Now (No Trial)
+                        </a>
+                        <p class="small text-muted mt-2">Instant access</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card-new most-popular">
+                        <div class="most-popular-ribbon">MOST POPULAR</div>
+                        <h4 class="mb-1">Infinity</h4>
+                        <p class="text-muted small">Full Membership (Monthly)</p>
+                        
+                        <div class="price">£33</div>
+                        <p class="duration">per month</p>
+                        
+                        <ul class="feature-list">
+                            <li class="dna-activation-feature fw-bold text-dark">12 Strand DNA Activation Protocol</li>
+                            <li>Weekly LIVE Meditations</li>
+                            <li>Monthly Live Calls & Q&A with Jerry</li>
+                            <li>Full Healing Library Access</li>
+                            <li>Exclusive Discounts</li>
+                            <li>Access to Private Skool Community</li>
+                            <li>Live Women's & Men's Circles</li>
+                        </ul>
+
+                        <a href="#" class="btn btn-start-trial">
+                            Start Free 7 Day Trial
+                        </a>
+                        <p class="small text-muted mt-2">Cancel anytime</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card-new">
+                        <h4 class="mb-1">Infinity Annual</h4>
+                        <p class="text-muted small">Full Membership (Best Value)</p>
+                        
+                        <div class="price">£299</div>
+                        <p class="duration">per year <span class="text-success fw-bold">(Save 25%)</span></p>
+                        
+                        <ul class="feature-list">
+                            <li class="dna-activation-feature fw-bold text-dark">12 Strand DNA Activation Protocol</li>
+                            <li>Weekly LIVE Meditations</li>
+                            <li>Monthly Live Calls & Q&A with Jerry</li>
+                            <li>Full Healing Library Access</li>
+                            <li>Exclusive Discounts</li>
+                            <li>Access to Private Skool Community</li>
+                            <li>Live Women's & Men's Circles</li>
+                        </ul>
+
+                        <a href="#" class="btn btn-start-trial">
+                            Start Free 7 Day Trial
+                        </a>
+                        <p class="small text-muted mt-2">Zero Risk Guarantee</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="story-section">
+        <div class="container">
+            <div class="story-card">
+                <h3>Star Magic Healing: The Full Story</h3>
+                
+                <div class="story-content" id="storyContent">
+                    <p><strong>Star Magic</strong> is a powerful, non-denominational energy healing modality that works with the human physical and non-physical anatomy. It is a fusion of ancient and advanced galactic energy healing technologies.</p>
+
+                    <h4>The Star Magic Approach</h4>
+                    <p>Jerry Sargeant, the Founder, describes Star Magic as bringing balance, harmony, inner peace, and happiness to the receiver. It is focused on creating profound physical and emotional healing by addressing the root cause of issues, rather than just the symptoms. Star Magic's healing frequencies can assist with:</p>
+                    <ul>
+                        <li>Releasing old traumas and energetic blockages.</li>
+                        <li>Activating your innate human ability to heal yourself.</li>
+                        <li>Unlocking dormant DNA codes for accelerated evolution.</li>
+                    </ul>
+                    <p>The core philosophy is simple: **We are all capable of self-healing.** The healing facilitator's role is to raise your vibration to such a degree that the body's natural state of coherence takes over, dissolving illness and misalignment.</p>
+
+                    <div class="fade-overlay"></div>
+
+                    <p>Star Magic's modalities cover a vast range of tools, including **Light Language Transmissions**, **12 Strand DNA Activations**, and the application of **J-Gate Geometry**. These tools allow the healing to be truly multi-dimensional, working across all planes of existence and time.</p>
+
+                    <h4>The Infinity Membership</h4>
+                    <p>The Infinity Membership is designed to give you continuous access to these high-frequency tools and the supportive Star Magic Tribe. It allows you to integrate these powerful techniques into your daily life for constant, sustainable transformation. Features include:</p>
+                    <ul>
+                        <li>**The 12 Strand DNA Activation Protocol**: A multi-month journey to reboot your energetic system.</li>
+                        <li>**Weekly Live Healing Sessions**: Direct transmissions from Jerry Sargeant and other high-vibe facilitators.</li>
+                        <li>**Cosmic Library Access**: Thousands of hours of guided meditations, light codes, and advanced teachings.</li>
+                        <li>**Ascension Lifestyle Support**: Guidance on nutrition, exercise, and consciousness expansion to support your higher self.</li>
+                    </ul>
+                    
+                    <h4>Jerry Sargeant: The Founder</h4>
+                    <p>Jerry Sargeant, also known as "The Facilitator," founded Star Magic after a dramatic life shift following a car crash in 2007. This event awakened his innate abilities and led him to spend years traveling the world, seeking out wisdom from shamans, gurus, and mystics. His mission is to share these galactic and universal truths to empower humanity's mass ascension.</p>
+                    
+                    <p>He is a respected author and speaker, dedicated to helping people unlock their true, limitless potential.</p>
+                    
+
+                </div>
+                
+                <button class="read-more-btn" id="readMoreBtn">
+                    Read More <i class="fas fa-chevron-down ms-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="display-6 fw-bold mb-4 text-center section-title">Frequently Asked Questions</h2>
+            <div class="accordion accordion-flush" id="faqAccordion">
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq-1">
+                            What is the 12 Strand DNA Activation Protocol?
+                        </button>
+                    </h2>
+                    <div id="faq-1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            The 12 Strand DNA Activation Protocol is the core evolutionary journey inside the Infinity Membership. It is a three-month initiation that awakens dormant DNA codes responsible for your clarity, intuition, vitality, emotional intelligence, confidence, and purpose. It is the blueprint for your evolution.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq-2">
+                            Is there a guarantee? How do I get a refund if I’m not satisfied?
+                        </button>
+                    </h2>
+                    <div id="faq-2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we offer the **Star Magic Zero Risk Guarantee**. If you commit to Infinity for 1 year and use the tools daily, and you feel the work has had no impact on your life, simply reach out to our team and we will refund your full investment.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq-3">
+                            What is the difference between Infinity LITE and Infinity Standard?
+                        </button>
+                    </h2>
+                    <div id="faq-3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            **Infinity Standard** (which is the monthly **Infinity** or annual **Infinity Annual** plans) includes the signature **12 Strand DNA Activation Protocol**, weekly LIVE Meditations, and access to the private Skool Community. **Infinity LITE** (£9.99/month) is a beginner tier that includes the Healing Meditations, Light Language, Cosmic Yoga, and Nutrition, but **does not** include the 12 Strand DNA Activation or the Skool Community access.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq-4">
+                            Is Star Magic Healing a religion?
+                        </button>
+                    </h2>
+                    <div id="faq-4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            No, Star Magic Healing is a **non-denominational** energy healing modality. It is a fusion of ancient wisdom and advanced galactic technology focused on personal empowerment, self-healing, and spiritual evolution through vibration and frequency. It supports all spiritual and religious paths.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center text-white py-4 custom-bg-dark">
+        <div class="container">
+            <p class="mb-1 small">
+                Star Magic Healing is the trading name for the Church of Star Magic Inc., a Delaware not for profit corporation. 
+                All Rights Reserved 2025
+            </p>
+            <p class="mb-0 small">
+                <a href="#" class="text-white-50">Privacy Policy</a> | 
+                <a href="#" class="text-white-50">Disclaimer</a> | 
+                <a href="#" class="text-white-50">Cancelation Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Countdown timer logic
+        const targetDate = new Date().getTime() + (7 * 24 * 60 * 60 * 1000); 
+
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0') + "D";
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0') + "H";
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0') + "M";
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0') + "S";
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+
+        // Story Card Expand/Collapse Logic
+        const storyContent = document.getElementById('storyContent');
+        const readMoreBtn = document.getElementById('readMoreBtn');
+        const fadeOverlay = storyContent.querySelector('.fade-overlay');
+
+        readMoreBtn.addEventListener('click', function() {
+            const isExpanded = storyContent.classList.toggle('expanded');
+            
+            if (isExpanded) {
+                readMoreBtn.innerHTML = 'Read Less <i class="fas fa-chevron-up ms-2"></i>';
+                // Hide the fade overlay immediately when expanding
+                fadeOverlay.style.opacity = '0';
+            } else {
+                readMoreBtn.innerHTML = 'Read More <i class="fas fa-chevron-down ms-2"></i>';
+                // Show the fade overlay when collapsing (after the transition ends is better, but this is immediate visual feedback)
+                // Using a timeout can sometimes ensure the fade comes back, but we'll stick to a simple opacity change for now.
+                fadeOverlay.style.opacity = '1';
+            }
+        });
+    </script>
+</body>
+</html>
