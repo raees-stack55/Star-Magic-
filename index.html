@@ -64,6 +64,212 @@
             padding-bottom: 6rem !important;
         }
 
+                /* --- New Global Variables --- */
+        :root {
+            /* ... (Keep your existing variables) ... */
+            --mv-primary: #3a1078;
+            --mv-secondary: #ffc400; 
+            --mv-dark: #260c45; 
+            /* NEW: Dark background color for the hero, used as overlay */
+            --mv-hero-bg-overlay: rgba(38, 12, 69, 0.7); 
+        }
+
+        /* --- TOP OFFER BANNER STYLES --- */
+        .top-offer-banner {
+            background-color: var(--mv-secondary); /* Bright gold/yellow background */
+            color: var(--mv-dark);
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
+        }
+        .top-offer-banner .time-box-offer {
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* --- HERO SECTION STYLES (MAJOR OVERHAUL) --- */
+        .hero-custom-design {
+            /* 1. Background Image with Overlay */
+            background-image: linear-gradient(
+                    rgba(38, 12, 69, 0.9), 
+                    rgba(38, 12, 69, 0.95)
+                ), 
+                url('https://picsum.photos/id/300/1600/1000'); /* Placeholder for dark, cosmic/abstract image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Optional: adds a nice parallax effect */
+            padding-top: 8rem !important; /* Increase vertical padding */
+            padding-bottom: 8rem !important; 
+            min-height: 70vh;
+        }
+
+        .hero-main-headline {
+            font-size: 3rem; /* Adjusted for impact */
+            font-weight: 900 !important;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+        @media (min-width: 992px) {
+            .hero-main-headline {
+                font-size: 4rem; /* Larger on desktop */
+            }
+        }
+
+        .hero-custom-design .highlight-text {
+            /* BLACK FRIDAY text style */
+            color: var(--mv-secondary); /* Gold/Yellow for BLACK FRIDAY */
+        }
+
+                /* --- New Global Variables --- */
+        :root {
+            /* ... (Keep your existing variables) ... */
+            --mv-primary: #3a1078;
+            --mv-secondary: #ffc400; 
+            --mv-dark: #260c45; 
+            /* NEW: Dark background color for the hero, used as overlay */
+            --mv-hero-bg-overlay: rgba(38, 12, 69, 0.7); 
+        }
+
+        /* --- HERO SECTION STYLES (Keep these from previous fix) --- */
+        .hero-custom-design {
+            /* 1. Background Image with Overlay */
+            /* I'm changing the background image to one that is more abstract purple/blue */
+            background-image: linear-gradient(
+                    rgba(38, 12, 69, 0.9), 
+                    rgba(38, 12, 69, 0.95)
+                ), 
+                url('https://picsum.photos/id/1055/1600/1000'); /* Abstract blue/purple waves */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            padding-top: 8rem !important;
+            padding-bottom: 8rem !important; 
+            min-height: 70vh;
+        }
+
+        .hero-main-headline {
+            font-size: 3rem; 
+            font-weight: 900 !important;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+        @media (min-width: 992px) {
+            .hero-main-headline {
+                font-size: 4rem; 
+            }
+        }
+        .hero-custom-design .highlight-text {
+            color: var(--mv-secondary); 
+        }
+
+        /* --- CTA BUTTON STYLES (Keep these) --- */
+        .btn-cta {
+            background-color: var(--mv-secondary);
+            color: var(--mv-dark);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.25rem;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--mv-secondary); 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 196, 0, 0.5); 
+            color: var(--mv-dark);
+        }
+
+        /* --- DYNAMIC TEACHER GRID STYLES (NEW/MODIFIED) --- */
+
+        .teacher-grid-wrapper {
+            /* We don't want a background or padding here, we want the grid to merge with the hero section */
+            max-width: 100%;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+        }
+
+        .teacher-grid {
+            /* Create a multi-column, dynamic layout */
+            display: grid;
+            /* Use grid template areas for a custom collage look */
+            grid-template-areas: 
+                "t1 t2 t3"
+                "t4 t2 t5"
+                "t6 t7 t5"
+                "t8 t9 t10"; /* Adjusted to fit more images dynamically */
+            
+            /* Define column widths, making the central column slightly wider */
+            grid-template-columns: 1fr 1.2fr 1fr; 
+            gap: 10px; /* Reduced gap for a tighter collage */
+            height: 600px; /* Set a specific height to make it vertically prominent */
+            overflow: hidden; /* Hide anything that spills over */
+        }
+
+        /* Map the images to the grid areas and adjust shapes/sizes */
+        .teacher-image:nth-child(1) { grid-area: t1; }
+        .teacher-image:nth-child(2) { grid-area: t2; }
+        .teacher-image:nth-child(3) { grid-area: t3; }
+        .teacher-image:nth-child(4) { grid-area: t4; }
+        .teacher-image:nth-child(5) { grid-area: t5; }
+        .teacher-image:nth-child(6) { grid-area: t6; }
+        .teacher-image:nth-child(7) { grid-area: t7; }
+        .teacher-image:nth-child(8) { grid-area: t8; }
+        .teacher-image:nth-child(9) { grid-area: t9; }
+        /* Adding a 10th image to fill the bottom right corner */
+        .teacher-image:nth-child(10) { 
+            grid-area: t10; 
+            display: block; 
+        } 
+
+        .teacher-image {
+            position: relative;
+            overflow: hidden; /* Important for containing images */
+            border-radius: 8px; /* Slightly rounded corners */
+        }
+
+        .teacher-image img {
+            /* Make image cover the area of the grid item */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0; /* Remove circular border */
+            border: 3px solid transparent; /* No border by default */
+            transition: transform 0.3s;
+        }
+
+        .teacher-image img {
+            border-radius: 8px; /* Match the container's rounded corners */
+        }
+
+        /* Add a hover effect for interactivity */
+        .teacher-image img:hover {
+            transform: scale(1.03);
+            z-index: 10;
+        }
+
+        /* Add a placeholder for more images in the HTML to fully utilize the grid */
+
+        /* --- CTA BUTTON STYLES --- */
+        /* Ensure the CTA button has the correct dark look from the image */
+        .btn-cta {
+            background-color: var(--mv-secondary);
+            color: var(--mv-dark);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.25rem;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--mv-secondary); 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 196, 0, 0.5); /* Glowing effect */
+            color: var(--mv-dark);
+        }
+
+
         .highlight-text {
             color: var(--mv-secondary);
         }
@@ -225,6 +431,26 @@
 
         .topic-card:hover {
             background-color: rgba(255, 255, 255, 0.15);
+        }
+
+                /* Custom Style for the CTA Button in the Video Section */
+        .cta-video-button {
+            /* Soft Yellow/Gold Gradient Background */
+            background: linear-gradient(to bottom, #ffe164, #ffc400); 
+            color: var(--mv-dark); /* Dark text on light button */
+            border: 1px solid #ffc400; 
+            border-radius: 50px; 
+            padding: 1rem 3rem;
+            font-size: 1.25rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+        }
+
+        .cta-video-button:hover {
+            background: linear-gradient(to top, #ffe164, #ffc400); 
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+            color: var(--mv-dark); 
         }
 
         /* --- What's Inside the Infinity Membership (New Stacked Phones Section) --- */
@@ -1044,6 +1270,621 @@
                 padding: 1rem;
             }
         }
+
+        /* --- HERO SECTION STYLES (MODIFIED for Vertical Fit) --- */
+.hero-custom-design {
+    /* Background Image with Overlay */
+    background-image: linear-gradient(
+            rgba(38, 12, 69, 0.9), 
+            rgba(38, 12, 69, 0.95)
+        ), 
+        url('https://picsum.photos/id/1055/1600/1000'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    
+    /* REDUCE PADDING: Use moderate padding, but ensure min-height is sufficient */
+    padding-top: 5rem !important; 
+    padding-bottom: 3rem !important; 
+    
+    /* Ensure the section is tall enough to house the vertical collage */
+    min-height: 80vh; 
+    display: flex; /* Use flexbox to align content within the container */
+    align-items: center; /* Vertically center content */
+}
+
+/* --- DYNAMIC TEACHER GRID STYLES (MODIFIED for Relative Height) --- */
+.teacher-grid-wrapper {
+    max-width: 100%;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    /* Ensure the wrapper takes the full height of its column */
+    height: 100%; 
+}
+
+.teacher-grid {
+    /* REMOVE FIXED HEIGHT: Now the height is 100% of the wrapper/column */
+    height: 100%; 
+    overflow: hidden; 
+    
+    display: grid;
+    /* Define column widths: tighter columns */
+    grid-template-columns: 1fr 1.1fr 1fr 0.9fr; 
+    
+    gap: 8px; 
+    
+    /* Keep the expanded grid template areas */
+    grid-template-areas: 
+        "t1 t2 t3 t11"
+        "t4 t2 t5 t12"
+        "t6 t7 t5 t13"
+        "t8 t7 t10 t14"
+        "t9 t15 t10 t14"; 
+}
+
+/* --- (Keep the rest of the .teacher-image and border styles as they were) --- */
+
+/* --- Add/Update these styles in your <style> block --- */
+
+/* Utility class for the main dark text color */
+.text-mv-primary {
+    color: var(--mv-primary) !important; 
+}
+
+/* Utility class for slightly lighter dark text color (for small text/disclaimer) */
+.text-mv-primary-light {
+    color: rgba(58, 16, 120, 0.7) !important; /* 70% opacity of --mv-primary */
+}
+
+/* Ensure the highlight-text is still the bright gold */
+.highlight-text {
+    color: var(--mv-secondary) !important;
+}
+
+/* Retaining the custom Gold CTA button style (from previous step) */
+.cta-video-button {
+    background: linear-gradient(to bottom, #ffe164, #ffc400); 
+    color: var(--mv-dark); 
+    border: 1px solid #ffc400; 
+    border-radius: 50px; 
+    padding: 1rem 3rem;
+    font-size: 1.25rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+}
+
+.cta-video-button:hover {
+    background: linear-gradient(to top, #ffe164, #ffc400); 
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    color: var(--mv-dark); 
+}
+/* --- TESTIMONIAL SECTION STYLES (REVISED) --- */
+
+.testimonial-section {
+    background-color: #ffffff; /* Use white background for the whole section */
+}
+
+/* Style the individual review card */
+.review-card {
+    background-color: #ffffff; 
+    border: 1px solid #f0f0f0; /* Very light border */
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); /* Extremely subtle shadow */
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: start; 
+}
+
+.review-card:hover {
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05); 
+}
+
+/* Header Elements (Avatar and Date) */
+.author-avatar-small {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; /* Circular image */
+    object-fit: cover;
+    /* Remove the purple border, the design uses a simple image */
+    border: none; 
+}
+
+.review-name {
+    font-size: 0.95rem; 
+    line-height: 1;
+}
+
+.review-status, .review-date {
+    font-size: 0.75rem;
+    color: #999 !important;
+}
+
+/* GREEN STAR RATING BOX */
+.rating-box {
+    background-color: #4CAF50; /* Green color from the design */
+    line-height: 1;
+    font-size: 0.8rem;
+    
+}
+.rating-box .text-white {
+    /* Adjust star size within the box */
+    font-size: 0.9rem !important; 
+    vertical-align: middle;
+}
+
+/* Review Text and Headline */
+.review-headline {
+    color: var(--mv-primary); /* Use the dark purple for the bold headline */
+    font-size: 1rem;
+}
+.testimonial-text {
+    color: #555; /* Slightly lighter text for the body */
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* --- CSS FOR REVERSE SCROLL (RIGHT-TO-LEFT) --- */
+
+.scrolling-content-reverse {
+    display: flex;
+    white-space: nowrap;
+    /* Apply the new reverse animation */
+    animation: scroll-right-to-left linear infinite; 
+}
+
+/* 1. KEYFRAMES FOR RIGHT-TO-LEFT MOVEMENT */
+@keyframes scroll-right-to-left {
+    /* Starts at 0% (beginning of the first content block) */
+    from {
+        transform: translateX(0%); 
+    }
+    /* Ends at -50% (midpoint, where the duplicated content begins) */
+    to {
+        transform: translateX(-50%); 
+    }
+}
+
+/* --- SECTION STYLES --- */
+.membership-content-section {
+    background-color: white !important; /* Set to white as requested */
+}
+.membership-content-section .display-6 {
+    color: #3f1a63 !important; /* Title color change for visibility on white background */
+}
+
+/* --- CAROUSEL TRACK STYLES (Enables 3-item view and scrolling) --- */
+
+.membership-carousel-container {
+    overflow: hidden; /* Hides the cards outside the viewable area */
+}
+.membership-track {
+    display: flex;
+    padding-bottom: 20px; /* Add padding to prevent content clipping */
+    /* Hides the default scrollbar but allows scrolling via JS */
+    overflow-x: hidden; 
+    scroll-behavior: smooth; /* Smooth scrolling for JavaScript movement */
+}
+
+.membership-card-wrapper {
+    /* Each card takes up 1/3 of the container width, plus spacing */
+    flex: 0 0 33.333%; 
+    padding: 0 10px;
+}
+
+/* On smaller screens (e.g., tablets), show fewer cards */
+@media (max-width: 992px) {
+    .membership-card-wrapper {
+        flex: 0 0 50%; /* Show 2 cards at a time */
+    }
+}
+@media (max-width: 768px) {
+    .membership-card-wrapper {
+        flex: 0 0 100%; /* Show 1 card at a time on mobile */
+    }
+}
+
+
+/* --- CARD STYLES (OVERWRITE PREVIOUS STYLES) --- */
+
+.membership-card {
+    /* REMOVED: background-color: #583383; */
+    min-height: 280px;
+    min-width: 400px !important;
+    border-radius: 7% !important;
+    height: 100%;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 28px !important;
+    /* Ensure text is readable on the lighter gradients */
+    color: #ffffff !important; 
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Light shadow for text visibility */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.membership-card h4 {
+    color: #ffffff; /* Darker color for headings */
+    font-weight: 800 !important;
+}
+.membership-card p {
+    color: rgba(255, 255, 255, 0.8) !important; /* Darker color for paragraphs */
+    font-weight: 500;
+}
+
+/* --- NEW GRADIENT BACKGROUNDS (Mimicking the reference image) --- */
+
+/* Green/Lime Gradient (Spiritual Awakening) */
+.card-bg-1 {
+    background: url(images/3.webp) center  / cover no-repeat;
+}
+
+/* Orange/Yellow Gradient (Wealth, Leadership) */
+.card-bg-2 {
+    background: url(images/6.webp) center  / cover no-repeat;
+}
+
+/* Blue/Purple Gradient (Mental & Emotional Mastery) */
+.card-bg-3 {
+    background: url(images/4.webp) center  / cover no-repeat;
+}
+
+/* --- ICON STYLES (Adjusting icon colors for the light backgrounds) --- */
+
+/* Reset icon box background/shadow to fit the bright cards */
+.icon-box {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem;
+    position: relative;
+    border-radius: 50%; /* Making icons circular */
+    /* Remove white shadow, use a subtle dark shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    background-color: white; /* Ensure base is white */
+}
+/* Making the icon text/symbols dark for contrast */
+.icon-dna::before, 
+.icon-language::before, 
+.icon-mystery::before, 
+.icon-healing::before, 
+.icon-community::before, 
+.icon-yoga::before { 
+    color: #3f1a63 !important; /* Dark purple color */
+}
+
+/* --- NAVIGATION ARROW STYLES (Keep the highlight color) --- */
+.btn-nav-arrow {
+    background-color: #f7e076; 
+    color: #3f1a63;
+    /* ... rest of arrow styles ... */
+}
+
+/* --- NEW ALTERNATING FEATURE SECTION STYLES --- */
+
+/* Ensure the primary color is used for checks and important elements */
+.text-mv-primary {
+    color: var(--mv-primary) !important;
+}
+
+.text-mv-check-color {
+    color: var(--mv-check-color) !important;
+}
+
+.bg-mv-light {
+    background-color: rgb(246, 246, 246);
+}
+
+/* Feature Card Styling */
+.alternating-feature-section {
+    background-color: var(--mv-card-bg); /* Use white/light background for the section */
+    border-radius: 12px !important;
+}
+
+.feature-card {
+    /* Subtle border for visual separation */
+    border-bottom: 1px solid var(--mv-card-border);
+    background-color: rgb(246, 246, 246);
+    border-radius: 12px !important;
+
+}
+
+.feature-card:last-child {
+    border-bottom: none; /* No border for the last card */
+    padding-bottom: 0 !important; /* Remove extra padding on the last card */
+    margin-bottom: 0 !important;
+    background-color: rgb(246, 246, 246);
+
+}
+
+/* ================================================= */
+/* 🚀 MODIFICATION TO ENSURE CONTENT LEFT / IMAGE RIGHT */
+/* ================================================= */
+
+/* Force the content column to always be first (left) */
+.feature-card .content-col {
+    order: 1 !important;
+}
+
+/* Force the image column to always be second (right) */
+.feature-card .image-col {
+    order: 2 !important;
+}
+
+/* Image Column Styling */
+.feature-card .image-col img {
+    width: 100%;
+    height: auto;
+    /* Maintain aspect ratio and give it a nice rounded corner */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Content Column Styling */
+.feature-card .content-col .card-content {
+    border-radius: 1rem !important;
+}
+
+.feature-card .content-col h3 {
+    color: var(--mv-primary);
+    font-size: 2rem;
+}
+
+/* --- NEW CREDIBILITY IMAGE SECTION STYLES --- */
+
+
+.credibility-image-section h2 {
+    /* Make the number part extra bold and large */
+    font-size: 4.5rem; 
+}
+
+/* Ensure the full width image container spans across the section */
+.case-study-visual-container {
+    padding: 0;
+    margin: 0;
+    /* Optional: Ensure the image starts right from the section edge */
+    width: 100%; 
+}
+
+.case-study-visual-container img {
+    /* Ensure the image is responsive and fills its container */
+    display: block;
+    height: auto;
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+    .credibility-image-section h2 {
+        font-size: 2.5rem; 
+        padding: 0 10px; /* Add padding to prevent text overflow */
+    }
+}
+
+/* --- NEW MODULE CATEGORY GRID SECTION STYLES --- */
+
+/* ... (Existing styles for .module-category-grid, .module-card remain unchanged) ... */
+
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.module-visual-area {
+    /* Increased height to fit the taller image aspect ratio */
+    height: 180px; 
+    position: relative;
+    background-color: transparent; 
+}
+
+.module-visual-area img {
+    height: 100%;
+    width: 100%;
+    /* object-fit: cover ensures the image fills the space without stretching */
+    object-fit: cover; 
+}
+
+/* --- NEW MODULE CATEGORY GRID SECTION STYLES --- */
+
+/* ... (Existing styles remain unchanged) ... */
+
+.module-visual-area {
+    /* Increased height for a better visual balance, matching the reference image */
+    height: 420px; 
+    position: relative;
+    background-color: transparent; 
+}
+
+.module-visual-area img {
+    height: 100%;
+    width: 100%;
+    /* object-fit: cover ensures the image fills the space without stretching */
+    object-fit: cover; 
+}
+
+
+/* ... (Remaining styles unchanged) ... */
+
+
+
+/* ... (Remaining styles unchanged) ... */
+
+/* --- NEW FEATURED VIDEO SECTION STYLES --- */
+
+.featured-video-section {
+    background-color: var(--mv-background);
+}
+
+.main-video-card {
+    /* Style the main video container for clickability */
+    cursor: pointer;
+    position: relative;
+    border: 5px solid var(--mv-primary); /* Purple border for definition */
+    transition: transform 0.3s;
+}
+
+.main-video-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Ensure the main video image fills the defined height */
+.main-video-card img {
+    height: 450px; 
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Reusing the play button overlay for the main video */
+.main-video-card .video-play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.3s;
+}
+
+
+
+/* Supporting Card Styles */
+.supporting-video-card {
+    background-color: var(--mv-card-bg);
+    border: 1px solid var(--mv-card-border);
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.supporting-video-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--mv-secondary);
+}
+
+.supporting-video-thumb {
+    width: 150px; /* Fixed width for the thumbnail image */
+    height: 100px; /* Fixed height for the thumbnail image */
+    overflow: hidden;
+}
+
+.supporting-video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .main-video-card img {
+        height: 250px; /* Make main video image shorter on mobile */
+    }
+}
+
+/* --- UPDATED CSS for Supporting Video Cards (Vertical Layout with Rounded Tops) --- */
+
+.supporting-video-card {
+    cursor: pointer;
+    background-color: var(--mv-card-bg);
+    border: 1px solid var(--mv-card-border);
+    transition: box-shadow 0.3s, border-color 0.3s;
+    overflow: hidden; 
+    /* Applying rounded corners to the whole card for this vertical layout */
+    border-radius: 0.5rem !important; 
+}
+
+.supporting-video-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--mv-secondary);
+}
+
+/* --- UPDATED CSS for Supporting Video Cards (Increased Height) --- */
+
+/* Video Thumbnail Wrapper (Top Side) */
+.supporting-video-thumb {
+    position: relative; 
+    overflow: hidden;
+    /* Increased height to make the video area more prominent and dominant */
+    height: 240px; 
+    /* Apply rounded corners only to the top, even though the card is fully rounded, this ensures the image conforms */
+    border-radius: 0.5rem 0.5rem 0 0; 
+}
+
+.supporting-video-thumb img {
+    width: 100%;
+    height: 100%; /* Must be 100% of the parent's fixed height */
+    object-fit: cover; /* This makes the image fill the 240px space */
+}
+
+/* ... (The rest of the CSS for .supporting-video-card, .video-play-overlay-small remains the same) ... */
+/* Play Button Overlay (Must inherit the thumbnail's rounded corners) */
+.video-play-overlay-small {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    border-radius: inherit; 
+    transition: background-color 0.3s;
+}
+
+.supporting-video-card:hover .video-play-overlay-small {
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.video-play-overlay-small i {
+    opacity: 0.9;
+    transition: transform 0.3s;
+}
+
+/* --- UPDATED CSS for Module Grid Cards --- */
+
+.module-visual-areaa {
+    /* Reduced height for shorter cards */
+    height: 120px; 
+    position: relative;
+    background-color: transparent; 
+    overflow: hidden; /* Ensure image stays within bounds */
+}
+
+.module-visual-areaa img {
+    height: 100%;
+    width: 100%;
+    /* Keeping 'cover' to ensure it fills the 120px height, though you can change to 'contain' if needed */
+    object-fit: cover; 
+}
+
+/* ... rest of the CSS remains unchanged ... */
+
+/* --- NEW TRUST AND TESTIMONIAL SECTION STYLES --- */
+
+.testimonial-card {
+    background-color: var(--mv-card-bg);
+    border: 1px solid var(--mv-card-border);
+}
+
+.testimonial-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 4px solid var(--mv-secondary); /* Gold ring around image */
+}
+
+/* Styling the logos to appear muted and clean */
+.logo-wall-card {
+    background-color: transparent;
+    border: none;
+}
+
+.logo-item {
+    max-height: 50px; /* Limit the height of the logos */
+    width: auto;
+    /* Optional: Use filter to make logos grayscale/muted */
+    filter: grayscale(100%) opacity(70%); 
+    transition: filter 0.3s;
+}
+
+/* Optional: Color/un-mute logos on hover */
+.logo-item:hover {
+    filter: grayscale(0%) opacity(100%); 
+}
     </style>
 </head>
 <body>
@@ -1067,28 +1908,84 @@
         </div>
     </nav>
 
-    <header class="hero-section text-center py-5">
-        <div class="container">
-            <h1 class="display-3 fw-bolder mb-4 text-white">
-                Unlock Your Potential with the <span class="highlight-text">Infinity Membership</span>
-            </h1>
-            <p class="lead mb-4 text-white-50">Gain access to our signature **12 Strand DNA Activation Protocol** — the initiation designed to awaken your dormant DNA codes & align your entire field.</p>
-            
-            <div class="countdown-timer mb-4 p-3 mx-auto">
-                <p class="mb-1 fw-bold text-dark">Black Friday Offer Ends In:</p>
-                <div id="countdown" class="d-flex justify-content-center fw-bold fs-4">
-                    <span class="time-box p-2 mx-1 rounded text-dark" id="days">00D</span>
-                    <span class="time-box p-2 mx-1 rounded text-dark" id="hours">00H</span>
-                    <span class="time-box p-2 mx-1 rounded text-dark" id="minutes">00M</span>
-                    <span class="time-box p-2 mx-1 rounded text-dark" id="seconds">00S</span>
+    <div class="top-offer-banner text-center py-2">
+        <div class="container d-flex flex-wrap justify-content-center align-items-center small fw-bold">
+            <p class="mb-0 text-dark me-3 d-none d-sm-block">BLACK FRIDAY EXCLUSIVE: SAVE BIG!</p>
+            <div id="countdown-banner" class="d-flex text-dark fw-bold">
+                <div class="time-box-offer px-2 py-1 mx-1 rounded-pill bg-dark text-white">
+                    <span id="days">00D</span>
+                </div>
+                <div class="time-box-offer px-2 py-1 mx-1 rounded-pill bg-dark text-white">
+                    <span id="hours">00H</span>
+                </div>
+                <div class="time-box-offer px-2 py-1 mx-1 rounded-pill bg-dark text-white">
+                    <span id="minutes">00M</span>
+                </div>
+                <div class="time-box-offer px-2 py-1 mx-1 rounded-pill bg-dark text-white">
+                    <span id="seconds">00S</span>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="rating mt-4">
-                <span class="text-warning fs-5">
-                    &#9733;&#9733;&#9733;&#9733;&#9733;
-                </span>
-                <p class="text-white-50 small mt-1">Rated 5 Stars by thousands of souls worldwide</p>
+    <header class="hero-section hero-custom-design py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                
+                <div class="col-lg-7 col-md-12 mb-5 mb-lg-0 text-white text-start">
+                    
+                    <p class="lead fw-normal text-white-75 mb-3">
+                        Master your soul's purpose in 20 minutes a day & join 1M+ members for 
+                    </p>
+                    
+                    <h1 class="display-3 fw-bolder mb-4 hero-main-headline">
+                        50% off Star Magic this 
+                        <span class="highlight-text text-white">BLACK FRIDAY</span>
+                    </h1>
+                    
+                    <p class="lead mb-4 fw-normal text-white-75 d-none d-md-block">
+                        Gain access to our signature **12 Strand DNA Activation Protocol** — the initiation designed to awaken your dormant DNA codes & align your entire field.
+                    </p>
+
+                    <a href="#pricing-section" class="btn btn-cta btn-lg my-3 fw-bold shadow-lg">
+                        <i class="fas fa-lock me-2"></i> Start your 14-day Risk-Free Trial
+                    </a>
+                    
+                    <p class="small text-white-50 mt-3 mb-1">
+                        Cancel anytime. 14-day money-back guarantee.
+                    </p>
+
+                    <div class="rating mt-3 d-flex align-items-center">
+                        <span class="text-warning fs-5 me-2">
+                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                        </span>
+                        <p class="text-white small mb-0 fw-bold">
+                            Rated 4.9 from 21,243 Souls Worldwide
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="teacher-grid-wrapper ms-auto">
+                        <div class="teacher-grid">
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1014/150/200" alt="Teacher 1"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1018/150/400" alt="Teacher 2 (Tall)"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1025/150/150" alt="Teacher 3"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1027/150/150" alt="Teacher 4"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1035/150/400" alt="Teacher 5 (Tall)"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1043/150/150" alt="Teacher 6"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1053/150/150" alt="Teacher 7"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1056/150/150" alt="Teacher 8"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1062/150/150" alt="Teacher 9"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1065/150/150" alt="Teacher 10"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1069/150/150" alt="Teacher 11"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1070/150/150" alt="Teacher 12"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1071/150/150" alt="Teacher 13"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1072/150/150" alt="Teacher 14"></div>
+                            <div class="teacher-image"><img src="https://picsum.photos/id/1073/150/150" alt="Teacher 15"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -1117,55 +2014,138 @@
         </div>
     </section>
 
-    <section class="py-5 bg-light text-center">
+    <section class="py-5 testimonial-section text-center">
         <div class="container">
-            <h2 class="display-6 fw-bold mb-5 section-title">Proof That Transformation Happens Here</h2>
+            <h2 class="display-6 fw-bold mb-5 section-title text-mv-primary">Proof That Transformation Happens Here</h2>
             <div class="row g-4 justify-content-center">
                 
-                <div class="col-md-4">
-                    <div class="p-3 border rounded shadow-sm h-100 text-start">
-                        <span class="text-warning fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                        <p class="mt-2 fst-italic">"My life changed. I tried psychology and other forms of healing but nothing worked. I now feel whole, happy and grateful."</p>
-                        <div class="review-author-info">
-                            <img src="https://picsum.photos/seed/lauren/40/40" alt="Reviewer Lauren">
-                            <p class="mb-0 fw-bold small">- Lauren</p>
+                <div class="col-lg-6 col-md-8">
+                    <div class="review-card p-4 rounded-3 h-100 mb-4">
+                        
+                        <div class="review-card-header d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 fw-bold review-name text-mv-primary">DaybelleCroes</p>
+                                    <p class="mb-0 small text-muted review-status">AW - 1 review</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <p class="mb-0 small text-muted review-date me-3">10 Oct</p>
+                                <img src="https://picsum.photos/seed/daybelle/40/40" alt="Reviewer DaybelleCroes" class="author-avatar-small">
+                            </div>
                         </div>
+                        
+                        <div class="rating-box d-inline-block p-1 rounded-1 mb-3">
+                            <span class="text-white fs-6">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+
+                        <p class="mb-2 fw-bold text-mv-primary-light review-headline">
+                            There's a shift that happened in my life since I started...
+                        </p>
+                        <p class="testimonial-text small">
+                            There's a shift that happened in my life after doing the Life Coach program and other quests on the platform. Everything you need to find and succeed in life is right here on the Mindvalley platform. Whatever you need, you’ll find it there. My journey has been extraordinary and is only starting. The community is supportive, down to earth and super nice. I am forever grateful for this company.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8">
+                    <div class="review-card p-4 rounded-3 h-100 mb-4">
+                        
+                        <div class="review-card-header d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 fw-bold review-name text-mv-primary">DaybelleCroes</p>
+                                    <p class="mb-0 small text-muted review-status">AW - 1 review</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <p class="mb-0 small text-muted review-date me-3">10 Oct</p>
+                                <img src="https://picsum.photos/seed/daybelle/40/40" alt="Reviewer DaybelleCroes" class="author-avatar-small">
+                            </div>
+                        </div>
+                        
+                        <div class="rating-box d-inline-block p-1 rounded-1 mb-3">
+                            <span class="text-white fs-6">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+
+                        <p class="mb-2 fw-bold text-mv-primary-light review-headline">
+                            There's a shift that happened in my life since I started...
+                        </p>
+                        <p class="testimonial-text small">
+                            There's a shift that happened in my life after doing the Life Coach program and other quests on the platform. Everything you need to find and succeed in life is right here on the Mindvalley platform. Whatever you need, you’ll find it there. My journey has been extraordinary and is only starting. The community is supportive, down to earth and super nice. I am forever grateful for this company.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8">
+                    <div class="review-card p-4 rounded-3 h-100 mb-4">
+                        
+                        <div class="review-card-header d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 fw-bold review-name text-mv-primary">DaybelleCroes</p>
+                                    <p class="mb-0 small text-muted review-status">AW - 1 review</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <p class="mb-0 small text-muted review-date me-3">10 Oct</p>
+                                <img src="https://picsum.photos/seed/daybelle/40/40" alt="Reviewer DaybelleCroes" class="author-avatar-small">
+                            </div>
+                        </div>
+                        
+                        <div class="rating-box d-inline-block p-1 rounded-1 mb-3">
+                            <span class="text-white fs-6">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+
+                        <p class="mb-2 fw-bold text-mv-primary-light review-headline">
+                            There's a shift that happened in my life since I started...
+                        </p>
+                        <p class="testimonial-text small">
+                            There's a shift that happened in my life after doing the Life Coach program and other quests on the platform. Everything you need to find and succeed in life is right here on the Mindvalley platform. Whatever you need, you’ll find it there. My journey has been extraordinary and is only starting. The community is supportive, down to earth and super nice. I am forever grateful for this company.
+                        </p>
                     </div>
                 </div>
                 
-                <div class="col-md-4">
-                    <div class="p-3 border rounded shadow-sm h-100 text-start">
-                        <span class="text-warning fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                        <p class="mt-2 fst-italic">"The energy, the wisdom, and the incredible tools shared here are beyond anything I have encountered before. The impact on my life has been profound."</p>
-                        <div class="review-author-info">
-                            <img src="https://picsum.photos/seed/reviewer-d/40/40" alt="Reviewer D.">
-                            <p class="mb-0 fw-bold small">- D.</p>
+                <div class="col-lg-6 col-md-8">
+                    <div class="review-card p-4 rounded-3 h-100 mb-4">
+                        
+                        <div class="review-card-header d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 fw-bold review-name text-mv-primary">Oana Garcia</p>
+                                    <p class="mb-0 small text-muted review-status">RO - 6 reviews</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <p class="mb-0 small text-muted review-date me-3">4 days ago</p>
+                                <img src="https://picsum.photos/seed/oana/40/40" alt="Reviewer Oana Garcia" class="author-avatar-small">
+                            </div>
                         </div>
+                        
+                        <div class="rating-box d-inline-block p-1 rounded-1 mb-3">
+                            <span class="text-white fs-6">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+
+                        <p class="mb-2 fw-bold text-mv-primary-light review-headline">
+                            Personal & professional growth that is authentic and fulfilling!
+                        </p>
+                        <p class="testimonial-text small">
+                            I have been a proud member of the Mindvalley Community for two years now... [long review text cut for brevity]. If you value global connections, personal and professional growth in a meaningful, authentic, happy, and healthy way, your family is aligned to evolved humanity values, you will definitely find a place in the Mindvalley community!
+                        </p>
                     </div>
                 </div>
                 
-                <div class="col-md-4">
-                    <div class="p-3 border rounded shadow-sm h-100 text-start">
-                        <span class="text-warning fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                        <p class="mt-2 fst-italic">"This isn’t basic or surface level spirituality, it’s real, deep healing that reaches your core. I plan to come back every year because it’s just too powerful to miss."</p>
-                        <div class="review-author-info">
-                            <img src="https://picsum.photos/seed/reviewer-thomas/40/40" alt="Reviewer Thomas">
-                            <p class="mb-0 fw-bold small">- Thomas</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <section class="horizontal-scroll-section pt-5 pb-0">
         <div class="container-fluid text-center">
-            <h3 class="mb-4 fw-bold section-title">Meet Your Guide: Jerry Sargeant</h3>
+            <h3 class="mb-4 fw-bold section-title text-mv-primary">Meet Your Guide: Jerry Sargeant</h3>
             <p class="mb-4 text-muted">Known globally as **"The Facilitator"**, Jerry Sargeant is a world-renowned frequency healer, author, and founder of Star Magic Healing.</p>
         </div>
         
         <div class="scrolling-wrapper">
             <div class="scrolling-content" style="animation-duration: 40s;">
+                
                 <div class="teacher-card-wrapper">
                     <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/jerry-sargeant/250/350');">
                         <div class="teacher-overlay"></div>
@@ -1240,70 +2220,405 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <section class="horizontal-scroll-section-reverse pb-5 pt-0">        
+        <div class="scrolling-wrapper">
+            <div class="scrolling-content" style="animation-duration: 40s;">
+                
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/jerry-sargeant/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>JERRY SARGEANT</h4><p>The Facilitator</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/dna-helix-activation/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>12 STRAND DNA</h4><p>Protocol Initiation</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/light-language-flow/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>LIGHT LANGUAGE</h4><p>Multi-Dimensional Codes</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/cosmic-yoga-pose/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>COSMIC YOGA</h4><p>Activate & Ground</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/vibrational-food-recipes/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>ASCENSION FOOD</h4><p>Vibrational Recipes</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/mystery-school-cosmic/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>MYSTERY SCHOOL</h4><p>Cosmic Teachings</p></div>
+                    </div>
+                </div>
+                
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/jerry-sargeant/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>JERRY SARGEANT</h4><p>The Facilitator</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/dna-helix-activation/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>12 STRAND DNA</h4><p>Protocol Initiation</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/light-language-flow/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>LIGHT LANGUAGE</h4><p>Multi-Dimensional Codes</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/cosmic-yoga-pose/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>COSMIC YOGA</h4><p>Activate & Ground</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/vibrational-food-recipes/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>ASCENSION FOOD</h4><p>Vibrational Recipes</p></div>
+                    </div>
+                </div>
+                <div class="teacher-card-wrapper">
+                    <div class="teacher-card" style="background-image: url('https://picsum.photos/seed/mystery-school-cosmic/250/350');">
+                        <div class="teacher-overlay"></div>
+                        <div class="teacher-info"><h4>MYSTERY SCHOOL</h4><p>Cosmic Teachings</p></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-5 membership-content-section" style="background-color: white;">
+        <div class="container text-center">
+            <h2 class="display-6 fw-bold mb-5" style="color: #3f1a63;">What's Inside the Infinity Membership</h2>
+            
+            <div class="membership-carousel-container">
+                <div id="membershipTrack" class="membership-track">
+                    
+                    <div class="membership-card-wrapper">
+                        <div class="membership-card card-bg-1 p-4 rounded text-center">
+                            <h4 class="fw-bold">12 Strand DNA Activation</h4>
+                            <p class="small">Step-by-step activations to reboot your system and anchor your next level.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="membership-card-wrapper">
+                        <div class="membership-card card-bg-2 p-4 rounded text-center">
+                            <h4 class="fw-bold">Light Language Transmissions</h4>
+                            <p class="small">Multi-dimensional activations that awaken dormant DNA and elevate consciousness.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="membership-card-wrapper">
+                        <div class="membership-card card-bg-3 p-4 rounded text-center">
+                            <h4 class="fw-bold">Mystery School Teachings</h4>
+                            <p class="small">Monthly live sessions revealing deep cosmic knowledge and universal truths.</p>
+                        </div>
+                    </div>
+
+                    <div class="membership-card-wrapper">
+                        <div class="membership-card card-bg-1 p-4 rounded text-center">
+                            <h4 class="fw-bold">Healing Meditations & Frequency Spas</h4>
+                            <p class="small">Frequency encoded meditations to upgrade your energy and align your vibration.</p>
+                        </div>
+                    </div>
+
+                    <div class="membership-card-wrapper">
+                        <div class="membership-card card-bg-2 p-4 rounded text-center">
+                            <h4 class="fw-bold">Live Circles & Skool Community</h4>
+                            <p class="small">Safe, transformative spaces for men's & women's circles within the Star Magic tribe.</p>
+                        </div>
+                    </div>
+
+                    <div class="membership-card-wrapper">
+                        <div class="membership-card card-bg-3 p-4 rounded text-center">
+                            <h4 class="fw-bold">Ascension Nutrition & Yoga</h4>
+                            <p class="small">Vibrational recipes and powerful Cosmic Yoga sessions to ground your energy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5 d-flex justify-content-center">
+                <button id="scrollLeftBtn" class="btn btn-nav-arrow mx-2"><i class="fas fa-arrow-left"></i></button>
+                <button id="scrollRightBtn" class="btn btn-nav-arrow mx-2"><i class="fas fa-arrow-right"></i></button>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="alternating-feature-section py-5 my-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-mv-primary">What you get</h2>
+            <p class="lead text-muted">Discover the three pillars of the Infinity Membership that will revolutionize your life.</p>
+        </div>
+
+        <div class="feature-card row align-items-center mb-5 pb-4">
+            <div class="col-lg-6 col-md-12 content-col order-lg-1 order-2">
+                <div class="card-content p-4 p-md-5 bg-mv-light rounded-4">
+                    <h3 class="fw-bold mb-3 text-center rounded-4" >01</h3>
+                    <h3 class="fw-bold mb-3">100+ programs in 6 categories</h3>
+                    <p class="lead text-muted">Access hundreds of powerful **Guided Healing Meditations** and **Light Language Protocols**.</p>
+                    <ul class="list-unstyled rounded-pill">
+                        <li><i class="fas fa-check-circle text-mv-check-color me-2"></i> Over 500 hours of energetic healing sessions.</li>
+                    </ul>
+                    <a href="#new-pricing" class="btn btn-lg btn-mv-secondary mt-3 fw-bold">Start Healing Today</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 image-col order-lg-2 order-1 mb-4 mb-lg-0">
+                <img src="images/mm-what-you-get-01.png" class="img-fluid shadow-lg " alt="Image of a person meditating with cosmic energy">
+            </div>
+        </div>
+
+        <div class="feature-card row align-items-center mb-5 pb-4">
+            <div class="col-lg-6 col-md-12 content-col order-lg-1 order-2">
+                <div class="card-content p-4 p-md-5 bg-mv-light rounded-4">
+                    <h3 class="fw-bold mb-3 text-center rounded-4" >02</h3>
+                    <h3 class="fw-bold mb-3">Community</h3>
+                    <p class="lead text-muted">Access hundreds of powerful **Guided Healing Meditations** and **Light Language Protocols**.</p>
+                    <ul class="list-unstyled rounded-pill">
+                        <li><i class="fas fa-check-circle text-mv-check-color me-2"></i> Over 500 hours of energetic healing sessions.</li>
+                    </ul>
+                    <a href="#new-pricing" class="btn btn-lg btn-mv-secondary mt-3 fw-bold">Start Healing Today</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 image-col order-lg-2 order-1 mb-4 mb-lg-0">
+                <img src="images/mm-what-you-get-03.png" class="img-fluid shadow-lg " alt="Image of a person meditating with cosmic energy">
             </div>
         </div>
         
-        <div class="container-fluid text-center mt-4 pb-5">
-            <a href="#cta-price" class="btn btn-cta">Begin Your Journey</a>
+        <div class="feature-card row align-items-center mb-5 pb-4">
+            <div class="col-lg-6 col-md-12 content-col order-lg-1 order-2">
+                <div class="card-content p-4 p-md-5 bg-mv-light rounded-4">
+                    <h3 class="fw-bold mb-3 text-center rounded-4" >03</h3>
+                    <h3 class="fw-bold mb-3">AI guided curriculum</h3>
+                    <p class="lead text-muted">Access hundreds of powerful **Guided Healing Meditations** and **Light Language Protocols**.</p>
+                    <ul class="list-unstyled rounded-pill">
+                        <li><i class="fas fa-check-circle text-mv-check-color me-2"></i> Over 500 hours of energetic healing sessions.</li>
+                    </ul>
+                    <a href="#new-pricing" class="btn btn-lg btn-mv-secondary mt-3 fw-bold">Start Healing Today</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 image-col order-lg-2 order-1 mb-4 mb-lg-0">
+                <img src="images/mm-what-you-get-04.png" class="img-fluid shadow-lg " alt="Image of a person meditating with cosmic energy">
+            </div>
         </div>
+    </div>
     </section>
 
-    <section class="py-5 custom-bg-dark">
-        <div class="container text-center text-white">
-            <h2 class="display-6 fw-bold mb-5">What's Inside the Infinity Membership</h2>
+    <section class="credibility-image-section py-5" id="case-studies-visual">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h4 class="display-3 fw-bold text-black">
+                49,083 <span class="fw-light">case studies from</span> around the world
+            </h4>
+        </div>
+    </div>
+    
+    <div class="case-study-visual-container">
+        <img src="images/mm-stories-collage-2.jpg" class="img-fluid w-100" alt="Map graphic showing 49,083 case studies globally">
+    </div>
+    </section>
+
+<section class="module-category-grid py-5 my-5" id="content-modules">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-mv-primary">Explore All 9 Core Content Modules</h2>
+            <p class="lead text-muted">A structured learning path for healing, activation, and mastery.Protocols for spiritual acceleration and connecting to higher consciousness.Protocols for spiritual acceleration and connecting to higher consciousness.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="module-card shadow-sm h-100 rounded-3">
+                    <div class="module-visual-area">
+                        <img src="images/Screenshot 2025-11-21 at 15-27-53 Black Friday Exclusive Save Big On Mindvalley Membership.png" class="img-fluid" alt="Core Healing Library">
+                    </div>
+                    <div class="module-content p-3">
+                        <h5 class="fw-bold mb-1 text-mv-dark">1. Core Healing Library</h5>
+                        <p class="text-muted small mb-0">Fundamentals of energetic clearing, chakra alignment, and stress relief. Techniques to align your frequency for wealth, success, and relationships.Techniques to align your frequency for wealth, success, and relationships.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="module-card shadow-sm h-100 rounded-3">
+                    <div class="module-visual-area">
+                        <img src="images/Screenshot 2025-11-21 at 15-28-06 Black Friday Exclusive Save Big On Mindvalley Membership.png" class="img-fluid" alt="DNA & Light Language Activation">
+                    </div>
+                    <div class="module-content p-3">
+                        <h5 class="fw-bold mb-1 text-mv-dark">2. DNA & Light Language</h5>
+                        <p class="text-muted small mb-0">Protocols for spiritual acceleration and connecting to higher consciousness. Fundamentals of energetic clearing, chakra alignment, and stress relief.Fundamentals of energetic clearing, chakra alignment, and stress relief.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="module-card shadow-sm h-100 rounded-3">
+                    <div class="module-visual-area">
+                        <img src="images/Screenshot 2025-11-21 at 15-28-26 Black Friday Exclusive Save Big On Mindvalley Membership.png" class="img-fluid" alt="Manifestation Mastery">
+                    </div>
+                    <div class="module-content p-3">
+                        <h5 class="fw-bold mb-1 text-mv-dark">3. Manifestation Mastery</h5>
+                        <p class="text-muted small mb-0">Techniques to align your frequency for wealth, success, and relationships. Protocols for spiritual acceleration and connecting to higher consciousness.Protocols for spiritual acceleration and connecting to higher consciousness.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="module-card shadow-sm h-100 rounded-3">
+                    <div class="module-visual-area">
+                        <img src="images/22.png" class="img-fluid" alt="Galactic Wisdom">
+                    </div>
+                    <div class="module-content p-3">
+                        <h5 class="fw-bold mb-1 text-mv-dark">4. Galactic Wisdom</h5>
+                        <p class="text-muted small mb-0">Exclusive access to Mystery School Teachings and cosmic knowledge downloads.Sessions and guides designed to help you discover and align with your soul's mission. Sessions and guides designed to help you discover and align with your soul's mission.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="module-card shadow-sm h-100 rounded-3">
+                    <div class="module-visual-area">
+                        <img src="images/Screenshot 2025-11-21 at 15-29-07 Black Friday Exclusive Save Big On Mindvalley Membership.png" class="img-fluid" alt="Life Purpose Clarity">
+                    </div>
+                    <div class="module-content p-3">
+                        <h5 class="fw-bold mb-1 text-mv-dark">5. Life Purpose Clarity</h5>
+                        <p class="text-muted small mb-0">Sessions and guides designed to help you discover and align with your soul's mission.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="module-card shadow-sm h-100 rounded-3">
+                    <div class="module-visual-area">
+                        <img src="images/Screenshot 2025-11-21 at 15-29-21 Black Friday Exclusive Save Big On Mindvalley Membership.png" class="img-fluid" alt="Emotional Freedom">
+                    </div>
+                    <div class="module-content p-3">
+                        <h5 class="fw-bold mb-1 text-mv-dark">6. Emotional Freedom</h5>
+                        <p class="text-muted small mb-0">Targeted protocols for overcoming anxiety, fear, and emotional blockages. Protocols for spiritual acceleration and connecting to higher consciousness. Protocols for spiritual acceleration and connecting to higher consciousness.</p>
+                    </div>
+                </div>
+            </div>
             
-            <div class="row g-4">
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="topic-card p-4 rounded text-center">
-                        <i class="fas fa-microchip fs-1 mb-3 highlight-text"></i>
-                        <h4 class="fw-bold">12 Strand DNA Activation</h4>
-                        <p class="small text-white-50">Step-by-step activations to reboot your system and anchor your next level.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="topic-card p-4 rounded text-center">
-                        <i class="fas fa-language fs-1 mb-3 highlight-text"></i>
-                        <h4 class="fw-bold">Light Language Transmissions</h4>
-                        <p class="small text-white-50">Multi-dimensional activations that awaken dormant DNA and elevate consciousness.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="topic-card p-4 rounded text-center">
-                        <i class="fas fa-book-sparkles fs-1 mb-3 highlight-text"></i>
-                        <h4 class="fw-bold">Mystery School Teachings</h4>
-                        <p class="small text-white-50">Monthly live sessions revealing deep cosmic knowledge and universal truths.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="topic-card p-4 rounded text-center">
-                        <i class="fas fa-spa fs-1 mb-3 highlight-text"></i>
-                        <h4 class="fw-bold">Healing Meditations & Frequency Spas</h4>
-                        <p class="small text-white-50">Frequency encoded meditations to upgrade your energy and align your vibration.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="topic-card p-4 rounded text-center">
-                        <i class="fas fa-seedling fs-1 mb-3 highlight-text"></i> 
-                        <h4 class="fw-bold">Live Circles & Skool Community</h4>
-                        <p class="small text-white-50">Safe, transformative spaces for men's & women's circles within the Star Magic tribe.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="topic-card p-4 rounded text-center">
-                        <i class="fas fa-seedling fs-1 mb-3 highlight-text"></i>
-                        <h4 class="fw-bold">Ascension Nutrition & Yoga</h4>
-                        <p class="small text-white-50">Vibrational recipes and powerful Cosmic Yoga sessions to ground your energy.</p>
+            
+        </div>
+    </div>
+</section>
+
+
+<!-- video section-->
+<section class="featured-video-section py-5 my-5" id="featured-videos">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-mv-primary">Why Star Magic is Different</h2>
+            <p class="lead text-muted">Watch this short video to understand the breakthrough in energetic healing.</p>
+        </div>
+
+        <!-- Main Video -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10">
+                <div class="main-video-card shadow-lg rounded-4 overflow-hidden" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#videoModal" 
+                     data-video-src="https://www.youtube.com/embed/Ynf8nxuJ3Ik">
+                    <div class="video-thumbnail-wrapper position-relative" style="height: 450px;">
+                        <img src="https://img.youtube.com/vi/Ynf8nxuJ3Ik/maxresdefault.jpg"
+                            class="img-fluid w-100 h-100 object-fit-cover"
+                            alt="Main Featured Video">
+                                                
+                        <div class="video-play-overlay d-flex align-items-center justify-content-center">
+                            <i class="fas fa-play-circle fa-6x" style="color: var(--mv-secondary); opacity: 0.9;"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- Modules -->
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="module-card shadow-sm h-100 rounded-3" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#videoModal" 
+                     data-video-src="https://www.youtube.com/embed/zoHvQDEzCYg">
+                    <div class="module-visual-areaa position-relative overflow-hidden">
+                        
+                        <img src="https://img.youtube.com/vi/zoHvQDEzCYg/maxresdefault.jpg"
+                            class="img-fluid w-100 h-100 object-fit-cover"
+                            alt="Main Featured Video">
+                                                
+                        <div class="video-play-overlay d-flex align-items-center justify-content-center">
+                            <i class="fas fa-play-circle fa-6x" style="color: var(--mv-secondary); opacity: 0.9;"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="module-content p-3">
+                        <h5 class="fw-bold mb-1 text-mv-dark">1. Core Healing Library</h5>
+                        <p class="text-muted small mb-0">Fundamentals of energetic clearing, chakra alignment, and stress relief.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="module-card shadow-sm h-100 rounded-3" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#videoModal" 
+                     data-video-src="https://www.youtube.com/embed/T8sMBnJAwdg">
+                    <div class="module-visual-areaa position-relative overflow-hidden">
+                        <img src="https://img.youtube.com/vi/T8sMBnJAwdg/maxresdefault.jpg"
+                            class="img-fluid w-100 h-100 object-fit-cover"
+                            alt="Main Featured Video">
+                                                
+                        <div class="video-play-overlay d-flex align-items-center justify-content-center">
+                            <i class="fas fa-play-circle fa-6x" style="color: var(--mv-secondary); opacity: 0.9;"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="module-content p-3">
+                        <h5 class="fw-bold mb-1 text-mv-dark">2. DNA & Light Language</h5>
+                        <p class="text-muted small mb-0">Protocols for spiritual acceleration and connecting to higher consciousness.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="videoModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <iframe id="videoFrame" width="100%" height="450" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- new card -->
+
 
     <section class="whats-inside-new-section">
         <div class="container">
@@ -1789,6 +3104,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Countdown timer logic
         const targetDate = new Date().getTime() + (7 * 24 * 60 * 60 * 1000); 
@@ -1831,7 +3147,80 @@
                 // Using a timeout can sometimes ensure the fade comes back, but we'll stick to a simple opacity change for now.
                 fadeOverlay.style.opacity = '1';
             }
+
+            
         });
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const track = document.getElementById('membershipTrack');
+        const leftBtn = document.getElementById('scrollLeftBtn');
+        const rightBtn = document.getElementById('scrollRightBtn');
+        
+        // Function to handle the scroll movement
+        function scrollCards(direction) {
+            // Calculate the width of one card wrapper, including margin/padding
+            const cardWrapper = track.querySelector('.membership-card-wrapper');
+            const cardWidth = cardWrapper.offsetWidth; 
+            
+            // Calculate the distance to scroll (3 cards width)
+            const scrollDistance = cardWidth * 3; 
+
+            if (direction === 'left') {
+                track.scrollLeft -= scrollDistance;
+            } else if (direction === 'right') {
+                track.scrollLeft += scrollDistance;
+            }
+        }
+
+        leftBtn.addEventListener('click', () => scrollCards('left'));
+        rightBtn.addEventListener('click', () => scrollCards('right'));
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const videoModal = document.getElementById('videoModal');
+        const videoIframe = document.getElementById('videoIframe');
+        
+        // Check if both elements exist before adding listeners
+        if (videoModal && videoIframe) { 
+            
+            // Listener to load the video source when the modal is about to show
+            videoModal.addEventListener('show.bs.modal', (event) => {
+                const button = event.relatedTarget;
+                // Get data-video-src from the clicked card
+                const videoSrc = button.getAttribute('data-video-src'); 
+                
+                // Set the iframe source to the video URL (with autoplay enabled)
+                // We also add the rel=0 parameter to hide related videos
+                videoIframe.src = videoSrc + "?autoplay=1&rel=0";
+            });
+
+            // Listener to stop the video when the modal is closed
+            videoModal.addEventListener('hide.bs.modal', () => {
+                // Stop the video by removing the source URL
+                videoIframe.src = '';
+            });
+        }
+    });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const videoModal = document.getElementById("videoModal");
+    const videoFrame = document.getElementById("videoFrame");
+
+    // Load video on modal open
+    videoModal.addEventListener("show.bs.modal", function (event) {
+        const button = event.relatedTarget;
+        const videoSrc = button.getAttribute("data-video-src");
+        videoFrame.src = videoSrc + "?autoplay=1";
+    });
+
+    // Stop video on modal close
+    videoModal.addEventListener("hidden.bs.modal", function () {
+        videoFrame.src = "";
+    });
+});
+</script>
 </body>
 </html>
