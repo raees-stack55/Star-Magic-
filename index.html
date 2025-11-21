@@ -1885,6 +1885,36 @@
 .logo-item:hover {
     filter: grayscale(0%) opacity(100%); 
 }
+.module-visual-areaa {
+    position: relative;
+}
+
+.module-visual-areaa img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.video-play-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+.video-play-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    z-index: 1;
+}
+.video-play-overlay i {
+    z-index: 2;
+    position: relative;
+}
+
     </style>
 </head>
 <body>
@@ -2316,6 +2346,7 @@
                     
                     <div class="membership-card-wrapper">
                         <div class="membership-card card-bg-1 p-4 rounded text-center">
+                            <img src="" alt="">
                             <h4 class="fw-bold">12 Strand DNA Activation</h4>
                             <p class="small">Step-by-step activations to reboot your system and anchor your next level.</p>
                         </div>
